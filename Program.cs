@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 namespace QuestGuildTerminal;
+
 class Program
-{
-    static void Main()
+
     {
-        var terminal = new GuildTerminal();
+        static void Main()
+    {
+        GuildTerminal terminal = new GuildTerminal();
+
         terminal.Start();
     }
 }

@@ -28,4 +28,5 @@ public class Quest
     {
         Console.WriteLine($"Quest: {Title}\nDescription: {Description}\nCompleted: {IsCompleted}");
     }
+  
 }

@@ -9,17 +9,71 @@ namespace QuestGuildTerminal
         private Hero _hero;
         private List<Quest> _quests = new();
 
+        public void AddQuest()
+        {
+            _quests.Add(new Quest { Title = "Defeat the Dragon", IsCompleted = false });
+            _quests.Add(new Quest { Title = "Rescue the Princess", IsCompleted = true });
+            _quests.Add(new Quest { Title = "Find the Lost Sword", IsCompleted = false });
+        }
+
+        public void ShowAllQuests()
+        {
+            if (_quests.Count == 0)
+            {
+                Console.WriteLine("No quests found.");
+                return;
+            }
+
+            foreach (var quest in _quests)
+            {
+                Console.WriteLine($"Quest: {quest.Title}, Completed: {quest.IsCompleted}");
+            }
+        }
+
+        public void CompleteQuest(string title)
+        {
+            var quest = _quests.FirstOrDefault(q => q.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+            if (quest != null)
+            {
+                quest.IsCompleted = true;
+                Console.WriteLine($"✅ Quest '{title}' marked as completed.");
+            }
+            else
+            {
+                Console.WriteLine($"❌ Quest '{title}' not found.");
+            }
+        }
+
+        public void UpdateQuest(string oldTitle, string newTitle)
+        {
+            var quest = _quests.FirstOrDefault(q => q.Title.Equals(oldTitle, StringComparison.OrdinalIgnoreCase));
+            if (quest != null)
+            {
+                quest.Title = newTitle;
+                Console.WriteLine($"✏️ Quest title updated from '{oldTitle}' to '{newTitle}'.");
+            }
+            else
+            {
+                Console.WriteLine($"❌ Quest '{oldTitle}' not found.");
+            }
+        }
+
         public void Start()
         {
+            AddQuest(); // Lägg till exempelquests i början
+
             Console.WriteLine("⚔️ Welcome to the Quest Guild Terminal ⚔️");
-            Console.WriteLine("1. Create Hero Profile");
-            Console.WriteLine("2. Login");
-            Console.WriteLine("3. View Quests");
-            Console.WriteLine("4. Exit");
 
             while (true)
             {
-                Console.Write("\nSelect an option: ");
+                Console.WriteLine("\n1. Create Hero Profile");
+                Console.WriteLine("2. Login");
+                Console.WriteLine("3. View Quests");
+                Console.WriteLine("4. Complete a Quest");
+                Console.WriteLine("5. Update a Quest Title");
+                Console.WriteLine("6. Exit");
+                Console.Write("Select an option: ");
+
                 var input = Console.ReadLine();
 
                 switch (input)
@@ -34,6 +88,18 @@ namespace QuestGuildTerminal
                         ViewQuests();
                         break;
                     case "4":
+                        Console.Write("Enter quest title to complete: ");
+                        string title = Console.ReadLine();
+                        CompleteQuest(title);
+                        break;
+                    case "5":
+                        Console.Write("Enter old quest title: ");
+                        string oldTitle = Console.ReadLine();
+                        Console.Write("Enter new quest title: ");
+                        string newTitle = Console.ReadLine();
+                        UpdateQuest(oldTitle, newTitle);
+                        break;
+                    case "6":
                         Console.WriteLine("👋 Exiting...");
                         return;
                     default:
@@ -89,11 +155,11 @@ namespace QuestGuildTerminal
 
             Console.WriteLine("\n--- QUEST LIST ---");
             foreach (var quest in _quests)
-                Console.WriteLine($"🗺️ {quest.Title} - {(quest.IsCompleted ? "Completed" : "In progress")}");
+                Console.WriteLine($"🗺️ {quest.Title} - {(quest.IsCompleted ? "✅ Completed" : "🕓 In progress")}");
         }
     }
 
-    // Simple models for Hero and Quest
+    // Models
     public class Hero
     {
         public string Name { get; }
