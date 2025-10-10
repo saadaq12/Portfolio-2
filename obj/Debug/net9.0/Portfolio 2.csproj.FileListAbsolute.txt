@@ -1,0 +1,14 @@
+/Users/imraanmohamudali/Desktop/Portfolio 2/bin/Debug/net9.0/Portfolio 2
+/Users/imraanmohamudali/Desktop/Portfolio 2/bin/Debug/net9.0/Portfolio 2.deps.json
+/Users/imraanmohamudali/Desktop/Portfolio 2/bin/Debug/net9.0/Portfolio 2.runtimeconfig.json
+/Users/imraanmohamudali/Desktop/Portfolio 2/bin/Debug/net9.0/Portfolio 2.dll
+/Users/imraanmohamudali/Desktop/Portfolio 2/bin/Debug/net9.0/Portfolio 2.pdb
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.AssemblyInfoInputs.cache
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.AssemblyInfo.cs
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.csproj.CoreCompileInputs.cache
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.dll
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/refint/Portfolio 2.dll
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.pdb
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.genruntimeconfig.cache
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/ref/Portfolio 2.dll
