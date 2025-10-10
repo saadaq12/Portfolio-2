@@ -58,6 +58,7 @@ namespace QuestGuildTerminal
             }
         }
 
+        // ===== MAIN MENU =====
         public void Start()
         {
             AddQuest(); // Lägg till exempelquests i början
@@ -81,17 +82,21 @@ namespace QuestGuildTerminal
                     case "1":
                         CreateHeroProfile();
                         break;
+
                     case "2":
                         Login();
                         break;
+
                     case "3":
                         ViewQuests();
                         break;
+
                     case "4":
                         Console.Write("Enter quest title to complete: ");
                         string title = Console.ReadLine();
                         CompleteQuest(title);
                         break;
+
                     case "5":
                         Console.Write("Enter old quest title: ");
                         string oldTitle = Console.ReadLine();
@@ -99,9 +104,11 @@ namespace QuestGuildTerminal
                         string newTitle = Console.ReadLine();
                         UpdateQuest(oldTitle, newTitle);
                         break;
+
                     case "6":
                         Console.WriteLine("👋 Exiting...");
                         return;
+
                     default:
                         Console.WriteLine("❌ Invalid option. Please try again.");
                         break;
@@ -109,6 +116,7 @@ namespace QuestGuildTerminal
             }
         }
 
+        // ===== AUTHENTICATION =====
         private void CreateHeroProfile()
         {
             Console.Write("Enter hero name: ");
@@ -134,9 +142,29 @@ namespace QuestGuildTerminal
             string password = Console.ReadLine();
 
             if (name == _hero.Name && password == _hero.Password)
+            {
                 Console.WriteLine($"✅ Welcome back, {_hero.Name}!");
+                TwoFactorCheck();
+            }
             else
+            {
                 Console.WriteLine("❌ Incorrect name or password.");
+            }
+        }
+
+        // ===== 2FA (Two-Factor Authentication) =====
+        private void TwoFactorCheck()
+        {
+            Random random = new Random();
+            string code = random.Next(100000, 999999).ToString(); // 6-siffrig kod
+            Console.WriteLine($"📱 Your 2FA code is: {code}");
+            Console.Write("Enter the code: ");
+            string entered = Console.ReadLine();
+
+            if (entered == code)
+                Console.WriteLine("✅ Two-Factor Authentication successful!");
+            else
+                Console.WriteLine("❌ Invalid code. Access denied.");
         }
 
         private void ViewQuests()

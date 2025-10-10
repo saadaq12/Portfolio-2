@@ -12,3 +12,4 @@
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.pdb
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.genruntimeconfig.cache
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/ref/Portfolio 2.dll
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.sourcelink.json
