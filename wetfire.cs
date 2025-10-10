@@ -6,20 +6,23 @@ public class HjalteProfil
     public string Name { get; private set; }
     public string Password { get; private set; }
     public string EmailOrPhone { get; private set; }
+    public string Race { get; private set; }
+    public string HeroClass { get; private set; } // 🧙‍♂️ Ny!
     public int Level { get; private set; }
 
-    // Simulerad lagrad hjälte
     private static HjalteProfil _registeredHero = null;
 
-    public HjalteProfil(string name, string password, string emailOrPhone, int level)
+    public HjalteProfil(string name, string password, string emailOrPhone, string race, string heroClass, int level)
     {
         Name = name;
         Password = password;
         EmailOrPhone = emailOrPhone;
+        Race = race;
+        HeroClass = heroClass;
         Level = level;
     }
 
-    // Skapa ny hjälteprofil
+    // 🧙‍♂️ Registrering
     public static void Register()
     {
         Console.Write("Ange hjältenamn: ");
@@ -33,22 +36,71 @@ public class HjalteProfil
             if (IsStrongPassword(password))
                 break;
             else
-                Console.WriteLine("⚠️ Lösenordet är för svagt. Det måste ha minst 6 tecken, 1 stor bokstav, 1 siffra och 1 specialtecken.");
+                Console.WriteLine("⚠️ Svagt lösenord. Måste ha minst 6 tecken, 1 stor bokstav, 1 siffra och 1 specialtecken.");
         }
 
         Console.Write("Ange email eller telefon för 2FA: ");
         string emailOrPhone = Console.ReadLine();
 
-        _registeredHero = new HjalteProfil(name, password, emailOrPhone, 1);
-        Console.WriteLine($"🧝 Hjälteprofil skapad för {name}!");
+        string race = ChooseRace();
+        string heroClass = ChooseClass();
+
+        _registeredHero = new HjalteProfil(name, password, emailOrPhone, race, heroClass, 1);
+        Console.WriteLine($"🧝 Hjälteprofil skapad för {name}, den stolta {race} {heroClass}!");
     }
 
-    // Inloggning med 2FA
+    // 🧝‍♂️ Rasval
+    private static string ChooseRace()
+    {
+        string[] races = { "Human", "Elf", "Dwarf", "Orc", "Undead" };
+
+        Console.WriteLine("\nVälj din ras:");
+        for (int i = 0; i < races.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {races[i]}");
+        }
+
+        while (true)
+        {
+            Console.Write("👉 Ditt val (1–5): ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out int choice) && choice >= 1 && choice <= races.Length)
+                return races[choice - 1];
+
+            Console.WriteLine("❌ Ogiltigt val, försök igen.");
+        }
+    }
+
+    // ⚔️ Klassval
+    private static string ChooseClass()
+    {
+        string[] classes = { "Assassin", "Mage", "Fighter", "Ranger", "Necromancer" };
+
+        Console.WriteLine("\nVälj din klass:");
+        for (int i = 0; i < classes.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {classes[i]}");
+        }
+
+        while (true)
+        {
+            Console.Write("👉 Ditt val (1–5): ");
+            string input = Console.ReadLine();
+
+            if (int.TryParse(input, out int choice) && choice >= 1 && choice <= classes.Length)
+                return classes[choice - 1];
+
+            Console.WriteLine("❌ Ogiltigt val, försök igen.");
+        }
+    }
+
+    // 🧩 Inloggning
     public static bool Login()
     {
         if (_registeredHero == null)
         {
-            Console.WriteLine("⚠️ Ingen hjälteprofil hittades. Vänligen skapa en först.");
+            Console.WriteLine("⚠️ Ingen hjälteprofil hittades. Skapa en först.");
             return false;
         }
 
@@ -59,7 +111,7 @@ public class HjalteProfil
 
         if (name == _registeredHero.Name && password == _registeredHero.Password)
         {
-            Console.WriteLine($"✅ Välkommen tillbaka, {_registeredHero.Name}!");
+            Console.WriteLine($"✅ Välkommen tillbaka, {_registeredHero.Name} av släktet {_registeredHero.Race} — {_registeredHero.HeroClass}!");
             return TwoFactorAuth();
         }
         else
@@ -69,7 +121,7 @@ public class HjalteProfil
         }
     }
 
-    // Tvåfaktorsautentisering
+    // 🧩 Tvåfaktorsautentisering
     private static bool TwoFactorAuth()
     {
         Random random = new Random();
@@ -91,21 +143,23 @@ public class HjalteProfil
         }
     }
 
-    // Lösenords-styrkekontroll
+    // 🔐 Lösenordsstyrka
     private static bool IsStrongPassword(string password)
     {
         if (password.Length < 6) return false;
-        if (!Regex.IsMatch(password, @"[A-Z]")) return false;  // minst en stor bokstav
-        if (!Regex.IsMatch(password, @"[0-9]")) return false;  // minst en siffra
-        if (!Regex.IsMatch(password, @"[\W_]")) return false;  // minst ett specialtecken
+        if (!Regex.IsMatch(password, @"[A-Z]")) return false;
+        if (!Regex.IsMatch(password, @"[0-9]")) return false;
+        if (!Regex.IsMatch(password, @"[\W_]")) return false;
         return true;
     }
 
-    // Visa hjälteprofil
+    // 🪪 Visa profil
     public void DisplayProfile()
     {
-        Console.WriteLine($"\n🧝 Hjälteprofil:");
+        Console.WriteLine($"\n🧙‍♂️ Hjälteprofil:");
         Console.WriteLine($"Namn: {Name}");
+        Console.WriteLine($"Ras: {Race}");
+        Console.WriteLine($"Klass: {HeroClass}");
         Console.WriteLine($"Level: {Level}");
         Console.WriteLine($"2FA-kontakt: {EmailOrPhone}");
     }
