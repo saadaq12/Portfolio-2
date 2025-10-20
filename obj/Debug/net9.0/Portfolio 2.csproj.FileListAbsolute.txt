@@ -7,9 +7,9 @@
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.AssemblyInfoInputs.cache
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.AssemblyInfo.cs
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.csproj.CoreCompileInputs.cache
+/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.sourcelink.json
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.dll
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/refint/Portfolio 2.dll
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.pdb
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.genruntimeconfig.cache
 /Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/ref/Portfolio 2.dll
-/Users/imraanmohamudali/Desktop/Portfolio 2/obj/Debug/net9.0/Portfolio 2.sourcelink.json

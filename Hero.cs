@@ -1,7 +1,7 @@
 using System;
 using System.Text.RegularExpressions;
-
-public class HjalteProfil
+namespace QuestGuildTerminal;
+public class Hero
 {
     public string Name { get; private set; }
     public string Password { get; private set; }
@@ -10,9 +10,9 @@ public class HjalteProfil
     public string HeroClass { get; private set; } // 🧙‍♂️ Ny!
     public int Level { get; private set; }
 
-    private static HjalteProfil _registeredHero = null;
+    private static Hero? _registeredHero = null;
 
-    public HjalteProfil(string name, string password, string emailOrPhone, string race, string heroClass, int level)
+    public Hero(string name, string password, string emailOrPhone, string race, string heroClass, int level)
     {
         Name = name;
         Password = password;
@@ -45,7 +45,7 @@ public class HjalteProfil
         string race = ChooseRace();
         string heroClass = ChooseClass();
 
-        _registeredHero = new HjalteProfil(name, password, emailOrPhone, race, heroClass, 1);
+        _registeredHero = new Hero (name, password, emailOrPhone, race, heroClass, 1);
         Console.WriteLine($"🧝 Hjälteprofil skapad för {name}, den stolta {race} {heroClass}!");
     }
 
